@@ -1,27 +1,55 @@
-# ECommercestoreFrontend
+## Documentation
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.19.
 
-## Development server
+### Backend
+First, to correctly launch Spring Boot Backend application, <br>
+you will have to set values for <code>application.properties</code> file.
+Each properties sector has been divided with comments.<br>
+As first we see MySQL configuration, set it to corresponding mock-up.
+<br>
+<code>spring.datasource.url=</code> - your database ip or domain name, forwarded with port and database name<br>
+<code>spring.datasource.username</code> - obvious one<br>
+<code>spring.datasource.password</code> - obvious one as well
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The rest of database configuration can be left. No need to change it
 
-## Code scaffolding
+Directory where your products images will be saved. <br>
+Directory must be in src directory of Angular project, directly, containing assets with product images directory
+<br>
+<code>e-commerce.product.images.dir=(..pathToAngularSrcFolder)/assets/products-images/</code>
+<br>
+<br>
+Section commented out with ###-config can be left as well.
+<br>
+<br>
+E-mail section, by default has been set for G-mail SMTP Server.
+Here, only fields that has to be provided are username and password.
+This configuration is responsible for user account creation email verification.
+Oh, and one thing to remember, to let spring application log in to your gmail and sent <br>
+verification email you will have to go to your Gmail Account and allow third-party application log in.
+<br>You should find it in Gmail Security & Privacy sector.
+<br>
+<code>spring.mail.username=your_username</code>
+<br>
+<code>spring.mail.password=your_password</code>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+<br>
+<br>
+Last one and hopefully least one is Stripe configuration.
+Payment section has to be filled with your clientId and secretId from <code>https://developer.stripe.com</code>
 
-## Build
+<code>stripe.public.key</code> - Stripe public key
+<br>
+<code>stripe.secret.key</code> - Stripe secret key
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Frontend
 
-## Running end-to-end tests
+1. Set up Stripe checkout public key under <code> src/app/components/checkout/checkout.component.ts </code> - Stripe secret key
+2. Set up <code>appId</code> for Facebook authentication under <code> src/app/components/login/login.component.ts </code>
+3. Install project dependencies by typing <code>npm install</code> in terminal.
+4. Once dependencies are installed you can run <code>ng serve</code>
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+###That's it you are ready to go!
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

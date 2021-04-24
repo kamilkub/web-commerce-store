@@ -1,0 +1,68 @@
+<div class="buttons-view">
+    <a href="/admin-panel/orders" class="backBtn btn-primary"><i class="fa fa-arrow-left"></i></a>
+</div>
+
+<form [formGroup]="orderForm" *ngIf="order" style="width:30%;margin:auto;" id="addProductFrom" class="text-center border border-light p-5">
+
+    <p class="h4 mb-4">Order Form</p>
+
+    <p>Edit order</p>
+
+
+    <label>First name</label>
+    <input type="text" class="form-control mb-4" formControlName="buyerFirstName" name="buyerFirstName" placeholder="Buyer first name" required>
+    <span style="color:red;padding:5%;" *ngIf="orderForm.get('buyerFirstName').invalid && orderForm.get('buyerFirstName').touched">
+        Buyer first name is missing
+    </span>
+    <label>Last name</label>
+    <input type="text" class="form-control mb-4" formControlName="buyerSecondName" name="price" placeholder="Buyer last name" required>
+    <span style="color:red;padding:5%;" *ngIf="orderForm.get('buyerSecondName').invalid && orderForm.get('buyerSecondName').touched">
+        Buyer last name is missing
+    </span>
+    <label>Email</label>
+    <input type="email" class="form-control mb-4" formControlName="buyerEmail" name="email" placeholder="Buyer email" required>
+    <span style="color:red;padding:5%;" *ngIf="orderForm.get('buyerEmail').invalid && orderForm.get('buyerEmail').touched">
+        Buyer email is missing
+    </span>
+    <label>Country</label>
+    <input type="text" class="form-control mb-4" formControlName="shippingCountry" name="country" placeholder="Buyer country" required>
+    <span style="color:red;padding:5%;" *ngIf="orderForm.get('shippingCountry').invalid && orderForm.get('shippingCountry').touched">
+        Country is missing
+    </span>
+    <label>Street</label>
+    <input type="text" class="form-control mb-4" formControlName="shippingStreet" name="street" placeholder="Buyer shipping street" required>
+    <span style="color:red;padding:5%;" *ngIf="orderForm.get('shippingStreet').invalid && orderForm.get('shippingStreet').touched">
+        Street is missing
+    </span>
+    <label>City</label>
+    <input type="text" class="form-control mb-4" formControlName="shippingCity" name="city" placeholder="Buyer city" required>
+    <span style="color:red;padding:5%;" *ngIf="orderForm.get('shippingCity').invalid && orderForm.get('shippingCity').touched">
+        City is missing
+    </span>
+    <label>Region</label>
+    <input type="text" class="form-control mb-4" formControlName="shippingRegion" name="region" placeholder="Buyer region" required>
+    <span style="color:red;padding:5%;" *ngIf="orderForm.get('shippingRegion').invalid && orderForm.get('shippingRegion').touched">
+        Region is missing
+    </span>
+
+    <label>Postal Code</label>
+    <input type="text" class="form-control mb-4" formControlName="shippingPostalCode" name="postal-code" placeholder="Buyer postal code" required>
+    <span style="color:red;padding:5%;" *ngIf="orderForm.get('shippingPostalCode').invalid && orderForm.get('shippingPostalCode').touched">
+        Postal code is missing
+    </span>
+
+    <label>OrderStatus</label>
+    <select class="form-control mb-4" (change)="changeOrderState($event.target.value)" name="order-status" required>
+            <option value="{{statusArray[0]}}">PENDING</option>
+            <option value="{{statusArray[1]}}">ACCEPTED</option>
+            <option value="{{statusArray[2]}}">ON THE WAY</option>
+            <option value="{{statusArray[3]}}">DELIEVERED</option>
+        </select>
+
+
+
+
+    <button class="btn btn-info btn-block" [disabled]="orderForm.invalid" (click)="updateOrder()" type="submit">Save</button>
+
+
+</form>

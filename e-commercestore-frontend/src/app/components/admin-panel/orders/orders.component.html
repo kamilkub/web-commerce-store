@@ -1,0 +1,76 @@
+<div class="admin-tb">
+    <div class="buttons-view">
+        <a href="/admin-panel" class="backBtn btn-primary"><i class="fa fa-arrow-left"></i></a>
+    </div>
+
+    <div class="form-header">
+        <input #searchInput class="au-input au-input-large" type="text" name="search" placeholder="Search for orders by username..." />
+        <button class="btn btn-success btn-lg" type="submit" (click)="findOrdersByUsernameRedirect(searchInput.value)">
+            Search
+        </button>
+    </div>
+
+    <table *ngIf="dataAvailable" class="admin-table table table-dark">
+
+        <thead>
+            <tr>
+                <th *ngIf="totalElements == 0">No orders found</th>
+                <th *ngIf="totalElements != 0" scope="col">#</th>
+                <th *ngIf="totalElements != 0" scope="col">Buyer first name</th>
+                <th *ngIf="totalElements != 0" scope="col">Buyer second name</th>
+                <th *ngIf="totalElements != 0" scope="col">Buyer Email</th>
+                <th *ngIf="totalElements != 0" scope="col">Shipping Country</th>
+                <th *ngIf="totalElements != 0" scope="col">Shipping Street</th>
+                <th *ngIf="totalElements != 0" scope="col">Shipping City</th>
+                <th *ngIf="totalElements != 0" scope="col">Shipping Region</th>
+                <th *ngIf="totalElements != 0" scope="col">Shipping Postal Code</th>
+                <th *ngIf="totalElements != 0" scope="col">Status</th>
+                <th *ngIf="totalElements != 0" scope="col">Delete Order</th>
+                <th *ngIf="totalElements != 0" scope="col">Edit Order</th>
+
+                <!-- <th scope="col">Order Products</th> -->
+
+
+            </tr>
+        </thead>
+        <tbody *ngFor="let order of ordersArray; let i = index">
+            <tr>
+                <td>{{order.id}}</td>
+                <td>{{order.buyerFirstName}}</td>
+                <td>{{order.buyerSecondName}}</td>
+                <td>{{order.buyerEmail}}</td>
+                <td>{{order.shippingCountry}}</td>
+                <td>{{order.shippingStreet}}</td>
+                <td>{{order.shippingCity}}</td>
+                <td>{{order.shippingRegion}}</td>
+                <td>{{order.shippingPostalCode}}</td>
+                <td>{{order.orderStatus}}</td>
+                <!-- <td>{{order.orderProducts}}</td> -->
+
+
+                <td><button (click)="removeOrder(order.id)" class="btn btn-small btn-danger">Remove</button></td>
+                <td><a routerLink="/admin-panel/orders/editOrder/{{order.id}}" class="btn btn-small btn-warning">Edit</a></td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <div class="footer-pagination">
+        <div class="row">
+            <div class="col-md-6"></div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div style="padding:5%;" class="col-md-9">
+                        <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize" [collectionSize]="totalElements" (pageChange)="findOrders()">
+
+                        </ngb-pagination>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,35 @@
+<div class="header-wrap">
+    <div class="header-wrap-two">
+        <div class="resize">
+            <div class="div1">
+                <a *ngIf="!isLoggedIn" routerLink="/login" class="sign-in-button btn btn-small btn-light"><i class="fas fa-user-alt"></i>  Sign in</a>
+            </div>
+            <div class="div2">
+                <a *ngIf="!isLoggedIn" routerLink="/sign-up" class="sign-in-button btn btn-small btn-primary"><i class="fas fa-user-plus"></i>  Sign up</a>
+            </div>
+        </div>
+
+
+
+        <div *ngIf="authenticated">
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user-alt"></i>
+                    User menu
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <img style="text-align: center;margin:auto;" class="image-user" src="assets/user.png">
+                    <p class="dropdown-item user-email-welcome">{{ userEmail }}</p>
+                    <button *ngIf="!isAdmin" class="dropdown-item" routerLink="/order-tracking" type="button">Your orders</button>
+                    <button *ngIf="isLoggedIn && !isAdmin" class="dropdown-item" (click)="logout()" type="button">Logout</button>
+                    <button *ngIf="isAdmin" class="dropdown-item" routerLink="/admin-panel" type="button">Admin panel</button>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <app-search-input></app-search-input>
+    <app-cart-status></app-cart-status>
+
+</div>

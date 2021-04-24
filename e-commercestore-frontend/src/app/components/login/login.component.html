@@ -1,0 +1,44 @@
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Tabs Titles -->
+        <div *ngIf="!isLoginValid">
+            <div class="alert alert-danger" role="alert">
+                {{validationInfo }}
+            </div>
+        </div>
+        <div *ngIf="forgotIsValid">
+            <div class="alert alert-success" role="alert">
+                {{ successMessage }}
+            </div>
+        </div>
+
+
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="/assets/login-shop-image.png" id="icon" alt="User Icon" />
+        </div>
+        <hr>
+        <!-- Login Form -->
+        <form onsubmit="return false;">
+            <div *ngIf="!isForgotPasswordMode">
+                <input type="text" #usernameField id="login" class="fadeIn second" name="login" placeholder="Username" required>
+                <input type="password" #passwordField id="password" (change)="setPwd(passwordField.value)" class="fadeIn third" value="{{ password }}" name="password" placeholder="Password" required>
+                <input type="submit" (click)="signInUser(usernameField.value, passwordField.value)" class="fadeIn fourth" value="Log in">
+                <button type="submit" (click)="signFacebookUser()" class="fadeIn fourth facebook-btn fa-facebook">Continue with Facebook</button>
+            </div>
+            <div *ngIf="isForgotPasswordMode">
+                <input type="email" #emailField id="login" class="fadeIn second" name="email" placeholder="Email to send link to" required>
+                <input type="submit" (click)="sendChangePasswordLink(emailField.value)" class="fadeIn fourth" value="Send link">
+            </div>
+        </form>
+
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+            <a class="underlineHover" (click)="setForgotPasswordMode()">Forgot Password?</a>
+            <p>or</p>
+            <a class="underlineHover" href="/sign-up">
+                <span style="color:black; text-decoration: none;">Not having account yet?</span> Click here</a>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="admin-tb">
+    <div class="buttons-view">
+        <a href="/admin-panel" class="backBtn btn-primary"><i class="fa fa-arrow-left"></i></a>
+    </div>
+    <h1>Categories List</h1>
+    <div class="form-styler">
+        <form *ngIf="categoryForm" [formGroup]="categoryForm">
+            <input class="category-form-input au-input" type="text" name="categoryName" formControlName="categoryName" placeholder="Add category.." id="categoryName" required>
+            <input class="category-form-submit btn btn-small" (click)="addCategory()" [disabled]="categoryForm.invalid" type="submit" value="+">
+        </form>
+        <div class="form-header">
+            <input #searchInput class="au-input au-input-large" type="text" name="search" placeholder="Search for categories..." />
+            <button class="btn btn-success btn-lg" type="submit" (click)="searchRedirect(searchInput.value)">
+                Search
+            </button>
+        </div>
+    </div>
+
+    <table class="admin-table table table-dark">
+
+        <thead>
+            <tr>
+                <th *ngIf="totalElements != 0" scope="row">ID</th>
+                <th *ngIf="totalElements != 0" scope="row">Name</th>
+                <th *ngIf="totalElements != 0" scope="row">Delete Category</th>
+                <th *ngIf="totalElements == 0">No categories found</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let category of categoriesList; let i = index">
+            <tr>
+                <td>{{category.id}}</td>
+                <td>{{category.categoryName}}</td>
+
+                <td><button (click)="removeCategory(category.id)" class="btn btn-small btn-danger">Remove</button></td>
+
+            </tr>
+
+        </tbody>
+    </table>
+
+    <div class="footer-pagination">
+        <div class="row">
+            <div class="col-md-6"></div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div style="padding:5%;" class="col-md-9">
+                        <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize" [collectionSize]="totalElements" (pageChange)="getAllCategories()">
+
+                        </ngb-pagination>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

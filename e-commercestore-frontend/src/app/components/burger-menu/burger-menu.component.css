@@ -1,0 +1,11 @@
+.pos-f-t {
+    display: none;
+    margin: 0;
+    z-index: 1;
+}
+
+@media (max-width:990px) {
+    .pos-f-t {
+        display: block;
+    }
+}

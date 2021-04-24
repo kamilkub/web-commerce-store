@@ -1,0 +1,63 @@
+.backBtn {
+    margin-top: 20px;
+    border-radius: 35%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+}
+
+.buttons-view {
+    width: 50%;
+    margin: auto;
+}
+
+.backBtn i {
+    padding-top: 30%;
+}
+
+.admin-tb {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #30B8A1 !important;
+}
+
+.table {
+    width: 50%;
+    margin: auto;
+    margin-top: 1%;
+    font-size: 100%;
+}
+
+.up-header {
+    position: absolute;
+    margin: auto !important;
+    text-align: center;
+}
+
+.admin-buttons {
+    width: 50%;
+    margin: auto;
+}
+
+.button-one {
+    margin: auto;
+    width: 50%;
+    background: #454d55;
+    height: 70px;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+    margin-top: 15%;
+}
+
+td img {
+    width: 100px;
+    height: 100px;
+}
+
+.form-header {
+    width: 50%;
+    margin: auto;
+    padding-top: 2%;
+}

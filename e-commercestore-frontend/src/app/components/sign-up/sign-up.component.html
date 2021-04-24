@@ -1,0 +1,40 @@
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <div *ngIf="isAccountCreated != undefined">
+            <div *ngIf="!isAccountCreated" class="alert alert-danger" role="alert">
+                Username or email already exists :(
+            </div>
+            <div *ngIf="isAccountCreated">
+                <div class="alert alert-success" role="alert">
+                    Email account activation link has been sent!
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="!isAccountCreated" class="fadeIn first">
+            <img src="/assets/signup-icon.png" id="icon" alt="User Icon" />
+        </div>
+
+        <!-- Register Form -->
+        <form [formGroup]="signUpForm" *ngIf="!isAccountCreated && signUpForm">
+            <input type="email" formControlName="emailField" class="fadeIn second" placeholder="Email" required>
+            <span style="color:red;padding:5%;font-size:13px;" *ngIf="signUpForm.get('emailField').invalid && signUpForm.get('emailField').touched">
+                Email has to be correct
+            </span>
+            <input type="text" formControlName="username" id="login" class="fadeIn second" placeholder="Username" required>
+            <span style="color:red;padding:5%;font-size:13px;" *ngIf="signUpForm.get('username').invalid && signUpForm.get('username').touched">
+                Username cannot be empty
+            </span>
+            <div>
+                <input type="password" formControlName="password" id="password" class="fadeIn third" placeholder="Password" required>
+                <span style="color:red;font-size:13px;" *ngIf="signUpForm.get('password').invalid && signUpForm.get('password').touched">
+                Password should be minimum 7 of length, containing upper case letter and number
+                        </span>
+            </div>
+            <input [disabled]="signUpForm.invalid" type="submit" (click)="registerUser()" class="move fadeIn fourth" value="Sign up">
+        </form>
+
+    </div>
+</div>
+
+<app-footer></app-footer>

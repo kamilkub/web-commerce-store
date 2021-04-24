@@ -1,0 +1,37 @@
+<div class="buttons-view">
+    <a href="/admin-panel/products" class="backBtn btn-primary"><i class="fa fa-arrow-left"></i></a>
+</div>
+<form ng-model="addProductForm" style="width:30%;margin:auto;" id="addProductFrom" class="text-center border border-light p-5">
+
+    <p class="h4 mb-4">Product Form</p>
+
+    <p>Add a new product to your shop!</p>
+
+    <div class="form-group">
+        <label>Product name</label>
+        <input type="text" #name class="form-control" ng-model="productName" name="productName" placeholder="Product name" required>
+        <span ng-show="addProductForm.productName.$error.required">Provide product name</span>
+    </div>
+
+    <label>Price</label>
+    <input type="number" #price class="form-control mb-4" name="price" placeholder="Price" required>
+
+    <label>Quantity</label>
+    <input type="number" #quantity class="form-control mb-4" name="quantity" placeholder="Quantity.." required>
+
+    <label>Product image</label>
+    <input type="file" accept="image/*" (change)="getImage($event.target.files)" name="productImage" class="form-control-file" placeholder="Product image" required>
+
+    <label>Description</label>
+    <textarea type="number" minlength="30" #description class="form-control mb-4" name="description" placeholder="Describe a new product" required></textarea>
+
+    <label>Category</label>
+    <select name="prodCat" #categoryField class="form-control mb-4" required>
+        <option *ngFor="let category of categoriesForAdd; let i = index" value="{{category.id }}">{{ category.categoryName }}</option>
+    </select>
+
+
+    <button class="btn button-add" (click)="addProductToShop(name.value, price.value, quantity.value, description.value, categoryField.value)" type="submit">Add Product</button>
+
+
+</form>

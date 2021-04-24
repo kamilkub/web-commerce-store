@@ -1,0 +1,64 @@
+<div class="page-wrapper">
+
+
+    <!-- MENU SIDEBAR-->
+    <app-sidebar></app-sidebar>
+    <!-- END MENU SIDEBAR-->
+    <app-burger-menu></app-burger-menu>
+
+    <app-resize></app-resize>
+
+    <!-- PAGE CONTAINER-->
+    <div class="page-container">
+        <!-- HEADER DESKTOP-->
+        <header class="header-desktop">
+            <div class="section-content section-content-p30">
+                <div class="container-fluid">
+                    <app-header-bar></app-header-bar>
+                    <div class="account-wrap"></div>
+                </div>
+            </div>
+        </header>
+        <!-- END HEADER DESKTOP-->
+
+        <!-- MAIN CONTENT-->
+        <div class="main-content">
+            <div class="section-content section-content-p30">
+                <div class="container-fluid">
+
+                    <div *ngIf="!productExists" class="alert alert-danger" role="alert">
+                        Sorry. No such product has been found, try search box maybe.
+                    </div>
+                    <a class="" style="float:right;" routerLink="/">Back to Product List</a>
+                    <div class="row" *ngIf="isDataAvailable">
+
+                        <div>
+                            <img src="{{ productInfo.imageUrl }}" class="img-responsive" width="200px">
+
+                            <h3>{{ productInfo.name }}</h3>
+                            <div class="price">{{ productInfo.price | currency: 'USD' }}</div>
+                            <h4>Product Description</h4>
+                            <p style="padding-top:5%;padding-bottom:5%;"> {{productInfo.description}}</p>
+                            <!-- <p style="padding-top:15%;padding-bottom:15%;"> {{productInfo.description.substr(0, productInfo.description.length / 2)}}
+                                <span *ngIf="showMore">{{productInfo.description.substr(productInfo.description.length / 2, productInfo.description.length)}}</span>
+                                <a style="text-decoration: underline;cursor:pointer;" (click)="showMore =!showMore">... Show {{ showMore ? 'less' : 'more' }}</a>
+                            </p> -->
+
+
+                            <button (click)="addToUserCart(productInfo.id)" *ngIf="isAuth && productInfo.active" class="btn btn-primary btn-small">Add to cart</button>
+                            <a href="/login?returnUrl=/product-info/{{productInfo.id}}" *ngIf="!isAuth && productInfo.active" class="btn btn-primary btn-small">Buy now</a>
+                            <div class="alert alert-warning" *ngIf="!productInfo.active" role="alert">
+                                This product is currently unavailable
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END PAGE CONTAINER-->
+
+
+<app-footer></app-footer>

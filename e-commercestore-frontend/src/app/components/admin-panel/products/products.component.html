@@ -1,0 +1,64 @@
+<div class="admin-tb">
+    <div class="buttons-view">
+        <a href="/admin-panel" class="backBtn btn-primary"><i class="fa fa-arrow-left"></i></a>
+    </div>
+    <div class="admin-buttons">
+        <a class="resizer btn btn-lg btn-primary" (click)="redirectToAdding()">Add Product</a>
+    </div>
+
+    <div class="form-header">
+        <input #searchInput class="au-input au-input-large" id="inputGroup-sizing-sm" type="text" name="search" placeholder="Search for products..." />
+        <button class="btn btn-success btn-small" type="submit" (click)="findProductsRedirect(searchInput.value)">
+            Search
+        </button>
+    </div>
+
+
+    <table *ngIf="products" class="admin-table table table-dark">
+
+        <thead>
+            <tr>
+                <th *ngIf="totalElements == 0">No products found</th>
+                <th *ngIf="totalElements != 0" scope="col">#</th>
+                <th *ngIf="totalElements != 0" scope="col">Image</th>
+                <th *ngIf="totalElements != 0" scope="col">Name</th>
+                <th *ngIf="totalElements != 0" scope="col">Price</th>
+                <th *ngIf="totalElements != 0" scope="col">Active</th>
+                <th *ngIf="totalElements != 0" scope="col">Delete product</th>
+                <th *ngIf="totalElements != 0" scope="col">Edit Product</th>
+
+            </tr>
+        </thead>
+        <tbody *ngFor="let product of products; let i = index">
+            <tr>
+                <th scope="row">{{product.id}}</th>
+                <td><img src={{product.imageUrl}}/></td>
+                <td>{{product.name}}</td>
+                <td>{{product.price | currency : USD}}</td>
+                <td>{{product.active ? 'Yes' : 'No'}}</td>
+                <td><button (click)="removeProduct(product.id)" class="btn btn-small btn-danger">Remove</button></td>
+                <td><a routerLink="/admin-panel/editProduct/{{product.id}}" class="btn btn-small btn-warning">Edit</a></td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <div class="footer-pagination">
+        <div class="row">
+            <div class="col-md-6"></div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div style="padding:5%;" class="col-md-9">
+                        <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize" [collectionSize]="totalElements" (pageChange)="getAllProducts()">
+
+                        </ngb-pagination>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,153 @@
+<script src="https://js.stripe.com/v3/">
+</script>
+
+<div *ngIf="loadingScreen" class="loading-screen">
+
+    <div class="lds-roller">
+        <div>*</div>
+        <div>*</div>
+        <div>*</div>
+        <div>*</div>
+        <div>*</div>
+        <div>*</div>
+        <div>*</div>
+        <div>*</div>
+
+    </div>
+    <div>
+        <h4 class="loading-title">Waiting...</h4>
+    </div>
+
+</div>
+
+<div *ngIf="!loadingScreen" class="page-wrapper">
+
+    <!-- MENU SIDEBAR-->
+    <app-sidebar></app-sidebar>
+    <!-- END MENU SIDEBAR-->
+
+    <!-- PAGE CONTAINER-->
+    <div class="page-new">
+        <!-- HEADER DESKTOP-->
+        <header class="header-desktop extra">
+            <div class="section-content section-content-p30">
+                <div class="container-fluid">
+
+                    <app-header-bar></app-header-bar>
+
+                    <div class="account-wrap"></div>
+                </div>
+            </div>
+        </header>
+        <!-- END HEADER DESKTOP-->
+
+        <!-- MAIN CONTENT-->
+        <div class="main-content page-m">
+            <div class="section-content section-content-p30 e-spc">
+                <div class="container-fluid" *ngIf="checkoutForm" [formGroup]="checkoutForm">
+
+
+
+                    <form *ngIf="checkoutForm" [formGroup]="checkoutForm">
+                        <div class="form-area">
+                            <h3>Customer</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="input-space">
+                                        <input type="text" name="firstName" formControlName="customerFirstName" placeholder="First Name">
+                                        <span style="color:red;padding:5%;" *ngIf="customerFirstName.invalid && customerFirstName.touched">
+                                            First name has to be provided
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="input-space">
+                                        <input type="text" formControlName="customerLastName" placeholder="Last Name">
+                                        <span style="color:red;padding:5%;" *ngIf="customerLastName.invalid && customerLastName.touched">
+                                            Last name is missing
+                                        </span>
+                                    </div>
+
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-6">
+                                    <div class="input-space">
+                                        <input type="text" formControlName="customerEmail" placeholder="Email Address">
+                                        <span style="color:red;padding:5%;" *ngIf="customerEmail.invalid && customerEmail.touched">
+                                            Please, provide correct email
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Form 2-->
+                        <div class="form-area">
+
+                            <h3>Shipping Address</h3>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="input-space">
+                                        <input type="text" formControlName="orderCountry" placeholder="Country">
+                                        <span style="color:red;padding:5%;" *ngIf="orderCountry.invalid && orderCountry.touched">
+                                            Country order is urgent for successful shipping 
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="input-space">
+                                        <input type="text" formControlName="orderStreet" placeholder="Street">
+                                        <span style="color:red;padding:5%;" *ngIf="orderStreet.invalid && orderStreet.touched">
+                                            Street cannot be empty
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="input-space">
+                                        <input type="text" formControlName="orderCity" placeholder="City">
+                                        <span style="color:red;padding:5%;" *ngIf="orderCity.invalid && orderCity.touched">
+                                            City name cannot be empty
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="input-space">
+                                        <input type="text" formControlName="orderRegion" placeholder="Region">
+                                        <span style="color:red;padding:5%;" *ngIf="orderRegion.invalid && orderRegion.touched">
+                                            Region will let us direct shipping to your house quicker!
+                                            Make sure you provide a correct one
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="input-space">
+                                        <input type="text" formControlName="orderPostalCode" placeholder="Zip Code / Postal Code">
+                                        <span style="color:red;padding:5%;" *ngIf="orderPostalCode.invalid && orderPostalCode.touched">
+                                            Postal code is urgent
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-area">
+                            <h3>Review Your Order</h3>
+                            <b>Products Quantity: {{productCount}}</b>
+                            <h4>Shipping: {{ feePrice | currency: USD}}</h4>
+                            <b>Total Price: {{ cartPrice | currency: USD}}</b>
+                        </div>
+                        <div class="text-center">
+                            <input (click)="createOrder()" [disabled]="checkoutForm.invalid" type="submit" style="width:50%;" value="{{checkoutForm.invalid ? 'Wrong order details' : 'Pay'}}" class="btn btn-info">
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

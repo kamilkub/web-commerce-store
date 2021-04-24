@@ -1,0 +1,27 @@
+.shop-button {
+    max-width: 100%;
+    outline: none;
+    box-shadow: none;
+    position: absolute;
+    bottom: 0px;
+    display: inline-block;
+}
+
+.img-responsive {
+    max-width: 100%;
+    height: 100px;
+}
+
+@media (max-width:1200px) {
+    .price {
+        margin-top: 0px;
+    }
+}
+
+@media (max-width:760px) {
+    .shop-button {
+        margin: auto;
+        left: 25%;
+        width: 50%;
+    }
+}

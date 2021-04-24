@@ -1,0 +1,48 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div *ngIf="shopProducts?.length == 0" style="text-align: center;" class="alert alert-warning col-md-12" role="alert">
+                    We could not find any product
+                </div>
+
+                <div class="col-md-3" *ngFor="let product of shopProducts; let i = index">
+                    <div class="product-box">
+                        <a routerLink="/product-info/{{ product.id }}">
+                            <img style="width: 100px !important;" src="{{ product.imageUrl }}" class="img-responsive">
+                        </a>
+
+                        <a style="display:block;" routerLink="/product-info/{{ product.id }}">
+                            <h1>{{ product.name }}</h1>
+                        </a>
+                        <h2>{{ product.description.substr(0, 100) }}... </h2>
+                        <a href="/product-info/{{ product.id }}" style="left:10px;">More details</a>
+                        <div class="price">{{ product.price | currency: 'USD' }}</div>
+
+                        <a (click)="addProductToCart(product)" class="shop-button btn btn-dark btn-small">Add to cart</a>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="footer-pagination">
+                <div class="row">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div style="padding-left:30%;padding-top:2%;" class="col-md-9">
+                                <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize" [collectionSize]="totalElements" (pageChange)="findProducts()">
+
+                                </ngb-pagination>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>

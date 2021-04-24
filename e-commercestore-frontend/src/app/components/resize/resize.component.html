@@ -1,0 +1,25 @@
+<div class="main-grouper">
+    <div class="div2">
+        <!-- <div class="selec"> -->
+        <div class="selec">
+            <div *ngIf="authenticated" class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user-alt"></i>
+            User menu
+        </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <img style="text-align: center;margin:auto;" class="image-user" src="assets/user.png">
+                    <p class="dropdown-item user-email-welcome">{{ userEmail }}</p>
+                    <button *ngIf="!isAdmin" class="dropdown-item" routerLink="/order-tracking" type="button">Your orders</button>
+                    <button *ngIf="authenticated && !isAdmin" class="dropdown-item" (click)="logout()" type="button">Logout</button>
+                    <button *ngIf="isAdmin" class="dropdown-item" routerLink="/admin-panel" type="button">Admin panel</button>
+
+                </div>
+            </div>
+        </div>
+        <a routerLink="/cart-section">
+            <img class="shopping-cart-status" src="assets/shopping-cart.png" alt="shopping cart" />
+        </a>
+    </div>
+
+</div>

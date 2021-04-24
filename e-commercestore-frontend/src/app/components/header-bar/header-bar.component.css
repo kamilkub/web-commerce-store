@@ -1,0 +1,121 @@
+.sign-in-button i {
+    padding-right: 1%;
+}
+
+.welcome-container {
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    margin: auto;
+    float: left;
+}
+
+.resize {
+    width: 100%;
+    margin-left: 2%;
+}
+
+.sign-out-btn {
+    float: right;
+}
+
+.user-email-welcome {
+    color: green;
+    display: block;
+}
+
+.sign-in-button {
+    display: inline-block;
+    width: 75%;
+    margin-right: 1%;
+}
+
+.image-user {
+    width: 32px;
+    height: 32px;
+    /* margin: auto; */
+    /* padding-top: 3%; */
+}
+
+.div1 {
+    width: 50%;
+    float: left;
+}
+
+.div2 {
+    width: 50%;
+    float: right;
+}
+
+@media (max-width:1800px) {
+    .sign-in-button {
+        width: 100%;
+        /* margin-left: 2%; */
+        padding-right: 2%;
+        display: inline-block;
+    }
+    .resize {
+        width: 250px;
+    }
+    .div2 {
+        padding-right: 2%;
+    }
+    .div1 {
+        padding-right: 3%;
+    }
+}
+
+@media (max-width:1600px) {
+    .resize {
+        /* position: absolute; */
+        /* top: -80px; */
+        right: 5px;
+    }
+    .sign-in-button {
+        float: left;
+        width: 100%;
+        margin-left: 2%;
+    }
+}
+
+@media (max-width:990px) {
+    .dropdown {
+        display: none;
+    }
+    .welcome-container {
+        float: left;
+    }
+    .sign-in-button {
+        float: left;
+        width: 70%;
+        margin-left: 2%;
+    }
+    .resize {
+        display: none;
+    }
+}
+
+@media (max-width:600px) {
+    .dropdown {
+        top: 70px;
+        right: 30px;
+    }
+    .sign-in-button {
+        width: 100%;
+        margin-left: 2%;
+    }
+}
+
+@media (max-width:700px) {
+    .sign-in-button {
+        width: 70%;
+        margin-left: 2%;
+    }
+}
+
+@media (max-width:400px) {
+    .sign-in-button {
+        width: 100%;
+        margin-left: 2%;
+    }
+}

@@ -1,0 +1,19 @@
+<aside class="menu-sidebar d-none d-lg-block">
+    <div class="logo" style="border-bottom:2px solid black;">
+        <a style="margin:auto;text-align:center;" href="/">
+            <img src="assets/logo.png" alt="Technology Shop" class="img-responsive"> Technology Shop
+        </a>
+    </div>
+
+    <div class="menu-sidebar-content js-scrollbar1">
+
+        <nav class="navbar-sidebar">
+            <ul class="navbar-list" *ngFor="let category of categories; let i = index">
+                <li>
+                    <a style="color:white;" class="category-link" href="/category/{{ category.categoryName }}">{{ category.categoryName }}</a>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+</aside>

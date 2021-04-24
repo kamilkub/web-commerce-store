@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.menu-container {
+    width: 100%;
+    background: #183153;
+}
+
+.button-wrapper {
+    width: 100%;
+    margin: auto;
+}
+
+.button-wrapper button {
+    text-align: center;
+    margin-left: 10%;
+}
+
+.welcome-message {
+    color: white;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    padding: 5%;
+}
+
+.menu-guide {
+    width: 100%;
+    max-height: 600px;
+    padding-top: 5%;
+    margin: auto;
+}
+
+.menu-guide a {
+    font-family: 'Montserrat', sans-serif;
+    width: 24%;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    font-size: 100%;
+}
+
+.admin-table {
+    width: 100%;
+}
+
+@media (max-width:576px) {
+    .menu-guide a {
+        width: 23%;
+        display: inline-block;
+    }
+}
+
+.menu-guide a:hover {
+    color: red;
+    cursor: pointer;
+}
+
+hr {
+    border: 1px solid white;
+    height: 200px;
+    width: 0px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+a img {
+    display: block;
+    text-align: center;
+    margin: auto;
+    padding: 5px;
+}

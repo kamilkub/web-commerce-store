@@ -1,0 +1,81 @@
+<div class="wrapper fadeInDown">
+    <a href="/" class="back-btn btn btn-primary">Go back</a>
+
+    <div *ngIf="isOrderFinished" style="margin-top:5%;" class="alert alert-success" role="alert">
+        Payment completed. Thank you for buying our products!
+    </div>
+
+    <div class="formContent">
+
+
+        <div class="fadeIn first" *ngFor="let order of userOrders; let i = index">
+            <div class="order-container" *ngFor="let orderProduct of order.orderProducts">
+                <div class="left-side">
+                    <div class="top-product-info">
+                        <img class="product-image" src="{{ orderProduct.imageUrl }}" alt="product icon">
+                    </div>
+
+                    <div class="down-product-info">
+                        <h2>{{orderProduct.name}}</h2>
+                        <p>Price: {{ orderProduct.price | currency : 'USD' }}</p>
+                    </div>
+                </div>
+                <div class="right-side">
+                    <p class="info-paragraph" style="text-align: left;">Shippment address: {{order.shippingStreet}}/{{order.shippingCity}} {{order.shippingPostalCode}}</p>
+                    <p class="info-paragraph" style="text-align: left;">Description: {{ orderProduct.description }}
+                        <span class="product-description"></span>
+                    </p>
+                </div>
+            </div>
+
+
+
+            <div class="formFooter">
+                <div class="order-bar">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-12">
+                            <ul id="progressbar" *ngIf="order.orderStatus === 'PENDING'" class="text-center">
+                                <li class="active step0 text-font">
+                                    Pending
+                                </li>
+                                <li class="step0 text-font">Accepted</li>
+                                <li class="step0 text-font">On the way</li>
+                                <li class="step0 text-font">Delievered</li>
+                            </ul>
+
+                            <ul id="progressbar" *ngIf="order.orderStatus === 'ACCEPTED'" class="text-center">
+                                <li class="active step0 text-font">Pending</li>
+                                <li class="active step0 text-font">Accepted</li>
+                                <li class="step0 text-font">On the way</li>
+                                <li class="step0 text-font">Delievered</li>
+                            </ul>
+
+                            <ul id="progressbar" *ngIf="order.orderStatus === 'ON_THE_WAY'" class="text-center">
+                                <li class="active step0 text-font">Pending</li>
+                                <li class="active step0 text-font">Accepted</li>
+                                <li class="active step0 text-font">On the way</li>
+                                <li class="step0 text-font">Delievered</li>
+                            </ul>
+
+                            <ul id="progressbar" *ngIf="order.orderStatus === 'DELIEVERED'" class="text-center">
+                                <li class="active step0 text-font">Pending</li>
+                                <li class="active step0 text-font">Accepted</li>
+                                <li class="active step0 text-font">On the way</li>
+                                <li class="active step0 text-font">Delievered</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="order-status ">
+                    <p>Status: {{ order.orderStatus }} </p>
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+</div>

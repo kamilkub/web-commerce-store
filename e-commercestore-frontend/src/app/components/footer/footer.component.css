@@ -1,0 +1,9 @@
+.details {
+    width: 50%;
+    margin: auto !important;
+}
+
+.details p {
+    display: inline-block;
+    padding-right: 5%;
+}

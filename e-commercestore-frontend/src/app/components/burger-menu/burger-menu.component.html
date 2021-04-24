@@ -1,0 +1,16 @@
+<div class="pos-f-t">
+    <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4" *ngIf="categories">
+            <div *ngFor="let category of categories; let i = index">
+                <span class="text-muted"><a href="/category/{{category.categoryName}}">{{category.categoryName}}</a></span>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-dark bg-primary">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <a *ngIf="!isLoggedIn" routerLink="/login" class="btn btn-small btn-light"><i class="fas fa-user-alt"></i>  Sign in</a>
+        <a *ngIf="!isLoggedIn" routerLink="/sign-up" class="btn btn-small btn-dark"><i class="fas fa-user-plus"></i>  Sign up</a>
+    </nav>
+</div>

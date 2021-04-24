@@ -1,0 +1,12 @@
+.keeper {
+    width: 100%;
+}
+
+.cart {
+    width: 100%;
+    float: right;
+}
+
+.shopping-cart-status {
+    padding: 10px;
+}

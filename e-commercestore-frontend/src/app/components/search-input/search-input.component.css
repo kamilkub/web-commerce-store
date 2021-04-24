@@ -1,0 +1,9 @@
+@media (max-width:700px) {
+    .form-header {
+        margin-top: 5%;
+        margin-left: 30%;
+    }
+    .form-header * {
+        position: static;
+    }
+}

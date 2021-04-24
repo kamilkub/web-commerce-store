@@ -1,0 +1,62 @@
+.backBtn {
+    margin-top: 20px;
+    border-radius: 35%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+}
+
+.buttons-view {
+    width: 70%;
+    margin: auto;
+}
+
+.backBtn i {
+    padding-top: 30%;
+}
+
+.admin-tb {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #30B8A1 !important;
+    margin: auto;
+}
+
+.admin-table {
+    width: 100%;
+}
+
+@media (max-width:990px) {
+    .button-one {
+        width: 70%;
+    }
+}
+
+.table {
+    width: 50%;
+    margin: auto;
+    margin-top: 1%;
+}
+
+.up-header {
+    position: absolute;
+    margin: auto !important;
+    text-align: center;
+}
+
+.admin-buttons {
+    width: 50%;
+    margin: auto;
+}
+
+td img {
+    width: 100px;
+    height: 100px;
+}
+
+.form-header {
+    padding-top: 2%;
+    width: 50%;
+    margin: auto;
+}

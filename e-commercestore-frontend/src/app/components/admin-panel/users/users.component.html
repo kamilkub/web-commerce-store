@@ -1,0 +1,58 @@
+<div class="admin-tb">
+    <div class="buttons-view">
+        <a href="/admin-panel" class="backBtn btn-primary"><i class="fa fa-arrow-left"></i></a>
+    </div>
+
+    <div class="form-header">
+        <input #searchInput class="au-input au-input-large" type="text" name="search" placeholder="Search user by email..." />
+        <button class="btn btn-success btn-lg" type="submit" (click)="searchRedirect(searchInput.value)">
+            Search
+        </button>
+    </div>
+
+    <table class="admin-table table table-dark">
+
+        <thead>
+            <tr>
+                <th *ngIf="totalElements == 0">No users found</th>
+                <th *ngIf="totalElements != 0" scope="col">#</th>
+                <th *ngIf="totalElements != 0" scope="col">Username</th>
+                <th *ngIf="totalElements != 0" scope="col">Email</th>
+                <th *ngIf="totalElements != 0" scope="col">Password</th>
+                <th *ngIf="totalElements != 0" scope="col">Active</th>
+                <th *ngIf="totalElements != 0" scope="col">Delete user</th>
+
+            </tr>
+        </thead>
+        <tbody *ngFor="let user of usersList; let i = index">
+            <tr style="font-size:100%;">
+                <td scope="row">{{user.id}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.password.substr(0, 15)}}..</td>
+                <td>Yes</td>
+                <td><button (click)="removeUser(user.id)" class="btn btn-small btn-danger">Remove</button></td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <div class="footer-pagination">
+        <div class="row">
+            <div class="col-md-6"></div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div style="padding:5%;" class="col-md-9">
+                        <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize" [collectionSize]="totalElements" (pageChange)="getAllProducts()">
+
+                        </ngb-pagination>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
